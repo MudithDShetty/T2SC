@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocioCrypt</title>
+    <style>
+        :root {
+    --dark: #374151;
+    --darker: #1F2937;
+    --darkest: #111827;
+    --grey: #6B7280;
+    --pink: #EC4899;
+    --purple: #8B5CF6;
+    --light: #EEE;
+}
+        body{
+            overflow-y: hidden;
+            overflow-x: hidden;
+            background-color: var(--darkest);
+        }
+    @keyframes up-down {
+    from{
+      transform: translateZ(0%);
+    }
+    to{
+      transform: translateZ(100%);
+    }
+    
+  }
+  
+*{
+border-collapse: collapse;
+--body-bg-color: #1d1d1d;
+--theme-bg-color: #27292d;
+--border-color: #323336;
+--body-color: #d1d1d2;
+--active-conversation-bg: linear-gradient(
+to right,
+rgba(47, 50, 56, 0.54),
+rgba(238, 242, 244, 0) 100%
+);
+--msg-hover-bg: rgba(47, 50, 56, 0.54);
+--chat-text-bg: #383b40;
+--chat-text-color: #b5b7ba;
+--msg-date: #626466;
+--msg-message: var(--msg-date);
+--overlay-bg: linear-gradient(
+to bottom,
+rgba(0, 0, 0, 0) 0%,
+#27292d 65%,
+#27292d 100%
+);
+--input-bg: #2f3236;
+--chat-header-bg: linear-gradient(
+to bottom,
+#27292d 0%,
+#27292d 78%,
+rgba(255, 255, 255, 0) 100%
+);
+--settings-icon-color: #7c7e80;
+--developer-color: var(--border-color);
+--button-bg-color: #393b40;
+--button-color: var(--body-color);
+--input-chat-color: #6f7073;
+--detail-font-color: var(--input-chat-color);
+}
+  body{
+    background-image: var(--darkest);
+    overflow: hidden;
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: 2fr 4fr 2fr;
+    grid-template-rows: 1fr 4fr ;
+    gap: none ;
+    
+  }
+  .footer{
+    grid-column: span 2;
+    border: 2px solid var(--border-color);
+    height: 90px;
+    margin-top: -80px;
+  }
+  .logo{
+    background-color: var(--dark);;
+    border: 2px solid var(--chat-header-bg);
+    height: 180px;
+  }
+  .Todo{
+    background-color: var(--dark);
+    border: 2px solid var(--border-color);
+    display: grid;
+    height: 643px;
+    overflow: hidden;
+  }
+  .New{
+    background-color: var(--border-color);
+  }
+  .grid3{
+    display: grid;
+    grid-template-rows: 2fr 2fr;
+    gap: none;
+  }
+  .Chat{
+    height: 820px;
+    width:auto;
+    grid-row: span 2;
+    background-color:var(--dark);
+    border: 1px solid var(--border-color);
+  }
+  .Message{
+    color: var(--chat-text-color);
+    background-color: var(--darker);
+    border: 2px solid var(--border-color);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    height: 40px;
+    width: 750px;
+    position: relative;
+    top:750px;
+    left: 51px;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+  .file>input {
+    display: none;
+  }
+  .img_file{
+    height: 40px;
+    width: 45px;
+    border: 2px solid var(--border-color);
+    position: relative;
+    top:710px;
+    left: 799px;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .img_file{
+    background-color: var(--darker);
+  }
+  .send{
+    height: 40px;
+    width: 60px;
+    border: 2px solid var(--border-color);
+    background-image: linear-gradient(to right, var(--pink), var(--purple));
+    position: relative;
+    top:670px;
+    left: 916px;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  #sendbutton{
+    display: none;
+  }
+  .grid2{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 6fr;
+  }
+
+* {
+margin: 0;
+box-sizing: border-box;
+font-family: "Fira sans", sans-serif;
+}
+
+body {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+color: #FFF;
+background-color: var(--dark);
+}
+
+header {
+padding: 2rem 1rem;
+max-width: 800px;
+width: 100%;
+margin: 0 auto;
+}
+
+header h1{ 
+font-size: 2.5rem;
+font-weight: 300;
+color: var(--grey);
+margin-bottom: 1rem;
+}
+
+#new-task-form {
+display: flex;
+}
+
+input, button {
+appearance: none;
+border: none;
+outline: none;
+background: none;
+}
+
+#new-task-input {
+flex: 1 1 0%;
+background-color: var(--darker);
+padding: 1rem;
+border-radius: 1rem;
+margin-right: 1rem;
+color: var(--light);
+font-size: 1.25rem;
+}
+
+#new-task-input::placeholder {
+color: var(--grey);
+}
+
+#new-task-submit {
+color: var(--pink);
+font-size: 1.25rem;
+font-weight: 700;
+background-color: var(--pink);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+cursor: pointer;
+transition: 0.4s;
+}
+
+#new-task-submit:hover {
+opacity: 0.8;
+}
+
+#new-task-submit:active {
+opacity: 0.6;
+}
+
+main {
+flex: 1 1 0%;
+max-width: 800px;
+width: 100%;
+margin: 0 auto;
+}
+
+.task-list {
+padding: 1rem;
+}
+
+.task-list h2 {
+font-size: 1.5rem;
+font-weight: 300;
+color: var(--grey);
+margin-bottom: 1rem;
+}
+
+#tasks .task {
+display: flex;
+justify-content: space-between;
+background-color: var(--darkest);
+padding: 1rem;
+border-radius: 1rem;
+margin-bottom: 1rem;
+}
+
+.task .content {
+flex: 1 1 0%;
+}
+
+.task .content .text {
+color: var(--light);
+font-size: 1.125rem;
+width: 100%;
+display: block;
+transition: 0.4s;
+}
+
+.task .content .text:not(:read-only) {
+color: var(--pink);
+}
+
+.task .actions {
+display: flex;
+margin: 0 -0.5rem;
+}
+
+.task .actions button {
+cursor: pointer;
+margin: 0 0.5rem;
+font-size: 1.125rem;
+font-weight: 700;
+text-transform: uppercase;
+transition: 0.4s;
+}
+
+.task .actions button:hover {
+opacity: 0.8;
+}
+
+.task .actions button:active {
+opacity: 0.6;
+}
+
+.task .actions .edit {
+background-image: linear-gradient(to right, var(--pink), var(--purple));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.task .actions .delete {
+color: crimson;
+}
+body{
+    background-color: var(--darkest);
+}
+.Todo{
+    height: 700px;
+    width: 450px;
+    position: relative;
+    top:30px;
+    border-radius: 10px;
+}
+#spotify{
+            position: relative;
+            border-radius: 20px;
+            z-index: 1;
+           top:-1360px;
+           padding: 10px 10px 10px 10px ;
+           background-color: var(--dark);
+           width: 100%;
+            height: 290px;
+
+        }
+#sp{
+            margin:10 auto;
+        }
+#calendar{
+      position: relative;
+      justify-content: center;
+      margin: 0px auto; 
+      height:400px;
+      width: 400px;
+      top: -975px;
+      left:745px;
+      background-color: var(--dark);
+      border-radius: 10px;
+    }
+ #StopWatch{
+    background-color: var(--dark);
+    height: 300px;
+    width: 500px;
+    position: relative;
+    z-index: 2;
+    left: 1505px;
+    bottom:  270px;
+    align-items: center;
+    font-size: 15px;
+    border: 1px solid var(--purple);
+    border-radius: 10px;
+ }
+ #button-start{
+    position: relative;
+    font-size:25px ;
+    border: 1px solid var(--purple);
+    margin: 30px auto;
+    left: 100px;
+    background-color: rgba(140, 0, 255, 0.536);
+    color: white;
+ }
+ #button-stop{
+    margin: 30px auto;
+    font-size:25px ;
+    border: 1px solid var(--purple);
+    position: relative;
+    left: 100px;
+    background-color: rgba(140, 0, 255, 0.536);
+    color: white;
+ }
+ #button-reset{
+    font-size:25px ;
+    border: 1px solid var(--purple);
+    margin: 30px auto;
+    position: relative;
+    left: 100px;
+    background-color: rgba(140, 0, 255, 0.536);
+    color: white;
+ }
+ #time{
+    font-size: 30px;
+    margin-left: 152px;
+    margin-top: 100px;
+ }
+ #textb{
+    position: relative;
+    bottom: 1370px;
+    left: 20px;
+    margin: 0px auto;
+    z-index: 5;
+    background:transparent ;
+    border: 2px solid var(--purple);
+    border-radius: 20px;
+    font-size: 30px;
+    color: var(--pink);
+ }
+ textarea{
+    background-color: var(--dark) ;
+    color: var(--pink);
+    border-radius: 20px;
+    border: 0px;
+    font-size: 25px;
+    padding: 10px 10px 10px 10px;
+
+ }
+    </style>
+    
+</head>
+<body>
+    <div class="Todo">
+        <div class="grid2">
+          <div class="todo container">
+            <div class="Enter_todo">
+              <header>
+                <h1>Todo List</h1>
+                <form id="new-task-form">
+                  <input 
+                    type="text" 
+                    name="new-task-input" 
+                    id="new-task-input" 
+                    placeholder="What is in your agenda?" />
+                  <input 
+                    type="submit"
+                    id="new-task-submit" 
+                    value="Add task" />
+                </form>
+              </header>
+              <main>
+                <section class="task-list">
+                  <h2>Tasks</h2>
+            
+                  <div id="tasks">
+            
+                  </div>
+                </section>
+              </main>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div id="StopWatch">
+        <p id="time"><span id="seconds">00</span>:<span id="tens">00</span></p>
+             <button id="button-start">Start</button>
+               <button id="button-stop">Stop</button>
+                <button id="button-reset">Reset</button>
+      </div>
+    <div id="calendar">
+        <iframe src="https://calendar.google.com/calendar/embed?height=700&wkst=1&bgcolor=%23B39DDB&ctz=Asia%2FKolkata&src=OWJiYjNlOWQxMTNmYWY1YjI2NGI1MGY2YTA3MGU1MWM2Mzk0NWQ3YTNlN2M4Y2QzNzQ3MGZmZjNiZjQ3Y2YxNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23AD1457&color=%230B8043" style="border:solid 1px var(--purple)" width="410" height="410" frameborder="1" scrolling="no"></iframe>
+    </div>
+    <div id="textb">
+        <textarea  name="textarea" rows="23" cols="77">Write something here</textarea>
+    </div>
+    <div id="spotify">
+    <iframe id="sp" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2P2r8fAtEAFCthYoPWJ3qh?utm_source=generator" width="1900px" height="300" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <script src="./hello.js"></script>
+
+</body>
+</html>
